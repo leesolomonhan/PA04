@@ -117,7 +117,7 @@ class Scene {
       console.dir([point,normal,eye,mat,textureColor])
     }
 
-    return theColor.add(new Color(0.1,0,0))
+    return theColor.add(mat.emissive)
   }
 
 
