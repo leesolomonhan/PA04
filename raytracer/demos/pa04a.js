@@ -2,6 +2,7 @@
 
 texture1 = new Texture('/images/wood.jpg')
 texture2 = new Texture('/images/earth.jpg')
+texture3 = new Texture('/images/ball.png')
 document.getElementById('title').innerHTML="demos/pa04a"
 
 function runTest(){
@@ -22,7 +23,13 @@ function runTest(){
 	mat2.textureWeight = 0.5
 	mat2.texture.repeatU=1
 	mat2.texture.repeatV=1
-
+	
+	const mat3 = Material.standard()
+	mat3.texture = texture3
+	mat3.textureWeight = 0.5
+	mat3.texture.repeatU=1
+	mat3.texture.repeatV=1
+	mat3.emissive= new Color(0.25,0,0);
 
 
 
@@ -42,14 +49,21 @@ function runTest(){
 		//.rotateY(-Math.PI*0.5)
 	  .translate(new Vector3(2,0,-2))
 	//s1.material=mat2
-  scene.addObject(s1)
+  	scene.addObject(s1)
 
 	const s2 = new Sphere()
 	s2.material = mat2
 	s2.translate(new Vector3(25,5,40))
 	  .scale(new Vector3(5,5,5))
 
-	//scene.addObject(s2)
+	scene.addObject(s2)
+	
+	const s3 = new Sphere()
+	s3.material = mat3
+	s3.translate(new Vector3(-1.75,0,1.5))
+	  .scale(new Vector3(0.4,0.4,0.4))
+	scene.addObject(s3)
+	
 	const g=8
 	const p1 = new Square()
 	p1.material = mat1
