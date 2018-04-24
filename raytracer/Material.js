@@ -6,6 +6,7 @@ class Material{
     this.diffuse = diffuse
     this.specular = specular
     this.shininess = shininess
+    this.emissive = new Color(0,0,0)
     this.texture='none'
     this.textureWeight=0
     this.reflectivity=0
