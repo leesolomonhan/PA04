@@ -1,7 +1,6 @@
 
 
-texture1 = new Texture('/images/wood.jpg')
-texture2 = new Texture('/images/earth.jpg')
+texture1 = new Texture('/images/space.jpeg')
 texture3 = new Texture('/images/ball.png')
 document.getElementById('title').innerHTML="demos/pa04a"
 
@@ -13,17 +12,20 @@ function runTest(){
 
 
 	const mat1 = Material.standard()
-	mat1.texture = texture1
+	mat1.texture = texture3
 	mat1.textureWeight = 0.5
 	mat1.texture.repeatU=2
 	mat1.texture.repeatV=2
+	mat1.emissive= new Color(0.1,0.05,0);
 
 	const mat2 = Material.standard()
-	mat2.texture = texture2
+	mat2.texture = texture3
 	mat2.textureWeight = 0.5
 	mat2.texture.repeatU=1
 	mat2.texture.repeatV=1
-	
+	mat2.emissive= new Color(0.15,0,0.1);
+
+
 	const mat3 = Material.standard()
 	mat3.texture = texture3
 	mat3.textureWeight = 0.5
@@ -31,42 +33,46 @@ function runTest(){
 	mat3.texture.repeatV=1
 	mat3.emissive= new Color(0.25,0,0);
 
+	const mat4 = Material.standard()
+	mat4.texture = texture1
+	mat4.textureWeight = 0.5
+	mat4.texture.repeatU=2
+	mat4.texture.repeatV=2
+
+
 
 
 	//const s1 = new Sphere(new Vector3(-2,0,-80),20)
 	//const s2 = new Sphere(new Vector3(-50,0,-80),10)
 	const s0 = new Sphere()
 	s0.material = mat2
-	s0
-	  //.translate(new Vector3(25,5,25))
-	  .scale(new Vector3(0.5,0.5,0.5))
+	s0.scale(new Vector3(0.4,0.4,0.4))
+		.translate(new Vector3(0,4,0))
+		.rotateX(.6)
 
 	scene.addObject(s0)
 
 	const s1 = new Sphere()
-	s1.material=mat2
-	s1
-		//.rotateY(-Math.PI*0.5)
-	  .translate(new Vector3(2,0,-2))
-	//s1.material=mat2
-  	scene.addObject(s1)
+	s1.material=mat1
+	s1.translate(new Vector3(1.5,1,-1.5))
+		.scale(new Vector3(.4,.4,.4))
+  scene.addObject(s1)
 
 	const s2 = new Sphere()
-	s2.material = mat2
-	s2.translate(new Vector3(25,5,40))
-	  .scale(new Vector3(5,5,5))
-
+	s2.material = mat3
+	s2.translate(new Vector3(25,7,40))
+	  .scale(new Vector3(.4,.4,.4))
 	scene.addObject(s2)
-	
+
 	const s3 = new Sphere()
 	s3.material = mat3
-	s3.translate(new Vector3(-1.75,0,1.5))
-	  .scale(new Vector3(0.4,0.4,0.4))
+	s3.translate(new Vector3(-1.75,1,1.5))
+		.scale(new Vector3(.4,.4,.4))
 	scene.addObject(s3)
-	
+
 	const g=8
 	const p1 = new Square()
-	p1.material = mat1
+	p1.material = mat4
 	p1.rotateX(Math.PI/2)
 	 // .translate(new Vector3(-30,-10,-50))
 		.scale(new Vector3(g,g,1))
